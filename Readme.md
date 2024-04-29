@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Артур Аюпов](https://up.htmlacademy.ru/nodejs-api/7/user/2411369).
-* Наставник: `Неизвестно`.
+* Наставник: [Rail Sakhaviev](https://htmlacademy.ru/profile/id1331891).
 
 ---
 
