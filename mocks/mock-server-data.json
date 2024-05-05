@@ -1,0 +1,141 @@
+{
+  "api": {
+    "titles": [
+      "Beautiful & luxurious apartment at great location",
+      "Canal View Prinsengracht",
+      "Amazing and Extremely Central Flat",
+      "Tile House",
+      "Wood and stone place",
+      "The Pondhouse - A Magical Place",
+      "Perfectly located Castro",
+      "Loft Studio in the Central Area",
+      "Nice, cozy, warm big bed apartment",
+      "Waterfront with extraordinary view"
+    ],
+    "descriptions": [
+      "Experience the charm of city living in this cozy apartment located in the heart of downtown. Close to shops, restaurants, and cultural attractions.",
+      "Enjoy breathtaking views from this modern studio, featuring sleek design and all the amenities you need for a comfortable stay.",
+      "Escape to a charming cottage near the beach, where you can relax and unwind in a peaceful and serene environment.",
+      "Perfect for family getaways, this spacious townhouse offers ample room and modern conveniences for a memorable vacation.",
+      "Indulge in luxury with this penthouse boasting panoramic skyline views. Immerse yourself in elegance and sophistication.",
+      "Find peace in nature with a stay at this quaint cabin retreat in the woods. A perfect getaway for those seeking tranquility.",
+      "Step into paradise with a beachfront rental featuring a private pool. Enjoy the sun, sea, and sand right at your doorstep.",
+      "Experience urban elegance in this downtown loft, offering stylish decor and proximity to the city's vibrant nightlife.",
+      "Surround yourself with nature in this rustic villa, providing a charming and secluded retreat away from the hustle and bustle.",
+      "Host special events and gatherings in this elegant mansion, where historic charm meets modern luxury."
+    ],
+    "cities": [
+      {
+        "name": "Paris",
+        "location": {
+          "latitude": 48.85661,
+          "longitude": 2.351499
+        }
+      },
+      {
+        "name": "Cologne",
+        "location": {
+          "latitude": 50.938361,
+          "longitude": 6.959974
+        }
+      },
+      {
+        "name": "Brussels",
+        "location": {
+          "latitude": 50.846557,
+          "longitude": 4.351697
+        }
+      },
+      {
+        "name": "Amsterdam",
+        "location": {
+          "latitude": 52.37454,
+          "longitude": 4.897976
+        }
+      },
+      {
+        "name": "Hamburg",
+        "location": {
+          "latitude": 53.550341,
+          "longitude": 10.000654
+        }
+      },
+      {
+        "name": "Dusseldorf",
+        "location": {
+          "latitude": 51.225402,
+          "longitude": 6.776314
+        }
+      }
+    ],
+    "previewImages": [
+      "https://loremflickr.com/200/200/apartment?lock=1",
+      "https://loremflickr.com/200/200/apartment?lock=2",
+      "https://loremflickr.com/200/200/apartment?lock=3",
+      "https://loremflickr.com/200/200/apartment?lock=4",
+      "https://loremflickr.com/200/200/apartment?lock=5",
+      "https://loremflickr.com/200/200/apartment?lock=6",
+      "https://loremflickr.com/200/200/apartment?lock=7",
+      "https://loremflickr.com/200/200/apartment?lock=8",
+      "https://loremflickr.com/200/200/apartment?lock=9"
+    ],
+    "images": [
+      "https://loremflickr.com/400/400/apartment?lock=11",
+      "https://loremflickr.com/400/400/apartment?lock=12",
+      "https://loremflickr.com/400/400/apartment?lock=13",
+      "https://loremflickr.com/400/400/apartment?lock=14",
+      "https://loremflickr.com/400/400/apartment?lock=15",
+      "https://loremflickr.com/400/400/apartment?lock=16",
+      "https://loremflickr.com/400/400/apartment?lock=17",
+      "https://loremflickr.com/400/400/apartment?lock=18",
+      "https://loremflickr.com/400/400/apartment?lock=19"
+    ],
+    "types": [
+      "apartment",
+      "house",
+      "room",
+      "hotel"
+    ],
+    "goods": [
+      "Breakfast",
+      "Air conditioning",
+      "Laptop friendly workspace",
+      "Baby seat",
+      "Washer",
+      "Towels",
+      "Fridge"
+    ],
+    "users": [
+      {
+        "name": "Artur Ayupov",
+        "email": "artur@test.com",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1",
+        "isPro": false
+      },
+      {
+        "name": "Bruce Banner",
+        "email": "banner@test.com",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2",
+        "isPro": true
+      },
+      {
+        "name": "Peter Parker",
+        "email": "peter@test.com",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/3",
+        "isPro": false
+      },
+      {
+        "name": "Bruce Wayne",
+        "email": "wayne@test.com",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/4",
+        "isPro": true
+      },
+      {
+        "name": "Aunt May",
+        "email": "aunt@test.com",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5",
+        "isPro": true
+      }
+    ]
+  }
+}
