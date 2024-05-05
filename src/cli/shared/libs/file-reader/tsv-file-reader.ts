@@ -1,26 +1,14 @@
-import { readFileSync } from 'node:fs';
+import EventEmitter from 'node:events';
+import { createReadStream } from 'node:fs';
 
 import { FileReader } from './file-reader.interface.js';
-import { Offer, OfferType, User, City, Goods } from '../../types/index.js';
+import { Offer, OfferType, User, City, Goods, Location, CityName } from '../../types/index.js';
 
-export class TSVFileReader implements FileReader {
-  private rawData = '';
+export class TSVFileReader extends EventEmitter implements FileReader {
+  private CHUNK_SIZE = 16384; // 16KB
 
-  constructor(
-    private readonly filename: string
-  ) { }
-
-  private validateRawData(): void {
-    if (!this.rawData) {
-      throw new Error('File was not read');
-    }
-  }
-
-  private parseRawDataToOffers(): Offer[] {
-    return this.rawData
-      .split('\n')
-      .filter((row) => row.trim().length > 0)
-      .map((line) => this.parseLineToOffer(line));
+  constructor(private readonly filename: string) {
+    super();
   }
 
   private parseLineToOffer(line: string): Offer {
@@ -28,7 +16,9 @@ export class TSVFileReader implements FileReader {
       title,
       description,
       postDate,
-      city,
+      cityName,
+      cityLatitude,
+      cityLongitude,
       previewImage,
       images,
       isPremium,
@@ -39,20 +29,33 @@ export class TSVFileReader implements FileReader {
       maxAdults,
       price,
       goods,
-      name,
-      email,
-      avatarUrl,
-      password,
-      isPro,
       latitude,
       longitude,
+      userName,
+      userEmail,
+      userAvatarUrl,
+      userIsPro
     ] = line.split('\t');
+
+    const user: User = {
+      name: userName,
+      email: userEmail,
+      avatarUrl: userAvatarUrl,
+      isPro: this.parseStringToBoolean(userIsPro)
+    };
+
+    const cityLocation: Location = {
+      latitude: this.parseStringToFloatNumber(cityLatitude),
+      longitude: this.parseStringToFloatNumber(cityLongitude)
+    };
+
+    const city: City = this.parseCity(cityName as CityName, cityLocation);
 
     return {
       title,
       description,
       postDate: new Date(postDate),
-      city: city as City,
+      city,
       previewImage,
       images: this.parseImages(images),
       isPremium: this.parseStringToBoolean(isPremium),
@@ -63,9 +66,11 @@ export class TSVFileReader implements FileReader {
       maxAdults: this.parseStringToNumber(maxAdults),
       price: this.parseStringToNumber(price),
       goods: this.parseGoods(goods),
-      user: this.parseUser(name, email, avatarUrl, password, this.parseStringToBoolean(isPro)),
-      latitude: this.parseStringToFloatNumber(latitude),
-      longitude: this.parseStringToFloatNumber(longitude),
+      location: {
+        latitude: this.parseStringToFloatNumber(latitude),
+        longitude: this.parseStringToFloatNumber(longitude)
+      },
+      user
     };
   }
 
@@ -97,21 +102,38 @@ export class TSVFileReader implements FileReader {
     return parsedGoods;
   }
 
-  private parseUser(
-    name: string,
-    email: string,
-    avatarUrl: string,
-    password: string,
-    isPro: boolean): User {
-    return { name, email, avatarUrl, password, isPro };
+  private parseCity(
+    name: CityName,
+    location: Location): City {
+    return {
+      name,
+      location: location
+    };
   }
 
-  public read(): void {
-    this.rawData = readFileSync(this.filename, 'utf-8');
-  }
+  public async read(): Promise<void> {
+    const readStream = createReadStream(this.filename, {
+      highWaterMark: this.CHUNK_SIZE,
+      encoding: 'utf-8',
+    });
 
-  public toArray(): Offer[] {
-    this.validateRawData();
-    return this.parseRawDataToOffers();
+    let remainingData = '';
+    let nextLinePosition = -1;
+    let importedRowCount = 0;
+
+    for await (const chunk of readStream) {
+      remainingData += chunk.toString();
+
+      while ((nextLinePosition = remainingData.indexOf('\n')) >= 0) {
+        const completeRow = remainingData.slice(0, nextLinePosition + 1);
+        remainingData = remainingData.slice(++nextLinePosition);
+        importedRowCount++;
+
+        const parsedOffer = this.parseLineToOffer(completeRow);
+        this.emit('line', parsedOffer);
+      }
+    }
+
+    this.emit('end', importedRowCount);
   }
 }
