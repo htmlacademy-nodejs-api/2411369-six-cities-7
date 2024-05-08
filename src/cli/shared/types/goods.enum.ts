@@ -2,7 +2,8 @@ const OFFER_GOODS = [
   'Breakfast',
   'Air conditioning',
   'Laptop friendly workspace',
-  'Baby seat', 'Washer',
+  'Baby seat',
+  'Washer',
   'Towels',
   'Fridge'
 ] as const;

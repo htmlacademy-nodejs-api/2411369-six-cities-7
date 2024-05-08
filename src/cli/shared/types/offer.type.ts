@@ -1,7 +1,8 @@
-import { City } from './city.js';
-import { Goods } from './goods.js';
-import { OfferType } from './offer-type.js';
-import { User } from './user.js';
+import { City } from './city.type.js';
+import { Goods } from './goods.enum.js';
+import { Location } from './location.type.js';
+import { OfferType } from './offer-type.enum.js';
+import { User } from './user.type.js';
 
 export type Offer = {
   title: string;
@@ -18,7 +19,6 @@ export type Offer = {
   maxAdults: number;
   price: number;
   goods: Goods[];
+  location: Location
   user: User;
-  latitude: number;
-  longitude: number;
 }
