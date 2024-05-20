@@ -1,4 +1,4 @@
-const OFFER_GOODS = [
+export const OFFER_GOODS = [
   'Breakfast',
   'Air conditioning',
   'Laptop friendly workspace',

@@ -1,4 +1,4 @@
-const OFFER_TYPE = [
+export const OFFER_TYPE = [
   'apartment',
   'house',
   'room',
