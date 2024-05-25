@@ -1,6 +1,6 @@
-export { City, CityName } from './city.type.js';
-export { Goods } from './goods.enum.js';
-export { OfferType } from './offer-type.enum.js';
+export { City, CityName, OFFER_CITIES } from './city.type.js';
+export { Goods, OFFER_GOODS } from './goods.enum.js';
+export { OfferType, OFFER_TYPE } from './offer-type.enum.js';
 export { Offer } from './offer.type.js';
 export { User } from './user.type.js';
 export { MockServerData } from './mock-server-data.type.js';

@@ -1,6 +1,6 @@
 import { Location } from './location.type.js';
 
-const OFFER_CITIES = [
+export const OFFER_CITIES = [
   'Paris',
   'Cologne',
   'Brussels',
